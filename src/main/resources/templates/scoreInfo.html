@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>과목별 학생 점수</title>
+</head>
+<body>
+<section th:insert="~{navigationBar :: content}">
+</section>
+<h1>과목별 학생 점수</h1>
+<form th:action="@{/score/scores}" method="post">
+    <select name="subject">
+        <option th:each="subject : ${subjects}"
+                th:value="${subject.name}"
+                th:text="${subject.name}"
+                th:selected="${subject.name == selectedSubject}"></option>
+    </select>
+    <button type="submit">조회</button>
+</form>
+<div th:if="${scores != null}">
+    <table>
+        <tr>
+            <th>이름</th>
+            <th>학번</th>
+            <th>중점과목</th>
+            <th>점수</th>
+        </tr>
+        <tr th:each="score : ${scores}">
+            <td th:text="${score.getName()}"></td>
+            <td th:text="${score.getStudentId()}"></td>
+            <td th:text="${score.getRequiredSubject()}"></td>
+            <td th:text="${score.getScoreAndGrade()}"></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

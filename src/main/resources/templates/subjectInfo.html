@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>과목 정보</title>
+</head>
+<body>
+<section th:insert="~{navigationBar :: content}">
+</section>
+<h1>과목 정보</h2>
+<table>
+    <tr>
+        <th>번호</th>
+        <th>과목</th>
+    </tr>
+    <tr th:each="subject : ${subjects}">
+        <td th:text="${subject.getId()}"></td>
+        <td th:text="${subject.getName()}"></td>
+    </tr>
+</table>
+</body>
+</html>

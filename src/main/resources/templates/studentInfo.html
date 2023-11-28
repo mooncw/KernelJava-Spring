@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>학생 정보</title>
+</head>
+<body>
+<section th:insert="~{navigationBar :: content}">
+</section>
+<h1>학생 정보</h1>
+    <table>
+        <tr>
+            <th>학번</th>
+            <th>이름</th>
+            <th>전공</th>
+            <th>필수 과목</th>
+        </tr>
+        <tr th:each="student : ${students}">
+            <td th:text="${student.getStudentId()}"></td>
+            <td th:text="${student.getName()}"></td>
+            <td th:text="${student.getMajor()}"></td>
+            <td th:text="${student.getRequiredSubject()}"></td>
+        </tr>
+    </table>
+</body>
+</html>

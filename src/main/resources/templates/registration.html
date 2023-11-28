@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>수강신청</title>
+</head>
+<body>
+<section th:insert="~{navigationBar :: content}">
+</section>
+<h1>수강신청</h1>
+<form th:action="@{/subject/regist}" method="post">
+    <label for="studentId">학번:</label>
+    <input type="text" id="studentId" name="studentId" required>
+    <label for="subject">과목:</label>
+    <select id="subject" name="subject">
+        <option th:each="subject : ${subjects}" th:value="${subject.getName()}" th:text="${subject.getName()}"></option>
+    </select>
+    <button type="submit">신청</button>
+</form>
+<div th:if="${message != null}">
+    <p th:text="${message}"></p>
+</div>
+</body>
+</html>

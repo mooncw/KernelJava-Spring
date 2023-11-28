@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>과목 정보 입력</title>
+</head>
+<body>
+<section th:insert="~{navigationBar :: content}">
+</section>
+<h1>과목 정보 입력</h1>
+    <form action="/subject/create" method="post">
+        <label for="name">과목 이름:</label><br>
+        <input type="text" id="name" name="name"><br>
+        <input type="submit" value="등록">
+    </form>
+</body>
+</html>
+</body>
+</html>

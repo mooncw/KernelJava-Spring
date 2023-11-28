@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>학생 정보 입력</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<section th:insert="~{navigationBar :: content}">
+</section>
+<h1>학생 정보 입력</h1>
+    <form action="#" th:action="@{/student/create}" th:object="${studentInfoRequest}" method="post">
+        <label for="name">이름:</label><br>
+        <input type="text" id="name" th:field="*{name}"><br>
+        <label for="studentId">학번:</label><br>
+        <input type="text" id="studentId" th:field="*{studentId}"><br>
+        <label for="major">전공:</label><br>
+        <select id="major" th:field="*{major}">
+            <option value="none" selected>=== 선택 ===</option>
+            <option th:each="major : ${majors}" th:value="${major.title}" th:text="${major.title}" th:data-required-subject="${major.requiredSubject}"></option>
+        </select><br>
+        <label for="requiredSubject">필수 과목:</label><br>
+        <input type="text" id="requiredSubject" th:field="*{requiredSubject}" readonly><br>
+        <input type="submit" value="등록">
+    </form>
+
+    <script>
+        // 전공 선택 시 필수 과목 자동 선택
+        $('#major').change(function() {
+            var selectedOption = $(this).find('option:selected');
+            var requiredSubject = selectedOption.data('requiredSubject');
+            $('#requiredSubject').val(requiredSubject);
+        });
+    </script>
+</body>
+</html>
+</body>
+</html>
